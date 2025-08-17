@@ -3,12 +3,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/")
 public class ApiController {
+
     private final RatelimiterService rateLimiterService;
 
     public ApiController(RatelimiterService rateLimiterService){
         this.rateLimiterService = rateLimiterService;
+    }
+    @GetMapping("/")
+    public String home() {
+        return "API is running!";
     }
 
     @GetMapping("/data")
